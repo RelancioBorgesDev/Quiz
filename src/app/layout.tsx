@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Press_Start_2P, Play } from "next/font/google";
+import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 
 const p2 = Press_Start_2P({
   weight: ["400"],
   subsets: ["latin"],
   variable: "--font-family-p2",
-});
-
-const play = Play({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-family-play",
 });
 
 export const metadata: Metadata = {

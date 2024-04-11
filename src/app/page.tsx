@@ -131,7 +131,7 @@ export default function Home() {
         className="flex flex-col gap-6"
       >
         <motion.span whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}>
-          <Link href={""} className="text-2xl">
+          <Link href={"/games"} className="text-2xl">
             Jogar
           </Link>
         </motion.span>
