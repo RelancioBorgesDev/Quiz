@@ -1,8 +1,8 @@
-import { QrCode } from "lucide-react";
 import { Play } from "next/font/google";
 import React from "react";
 import RadioOption from "./_components/radio-option";
 import type { Metadata } from "next";
+import QrCodeModal from "@/components/qrcode-modal";
 
 const play = Play({
   weight: ["400"],
@@ -23,7 +23,7 @@ export default function MultiplaEscolha() {
         <header className="bg-question-header flex items-center justify-between py-8 px-7 rounded-t-lg">
           <h2 className="text-4xl">Questão 01/06</h2>
           <span>
-            <QrCode />
+            <QrCodeModal />
           </span>
         </header>
         <main className="py-6 px-4 flex flex-col gap-8 overflow-scroll">

@@ -73,4 +73,11 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  progress::-moz-progress-bar {
+    background: "#35104F";
+  }
+  progress::-webkit-progress-value {
+    background: "#35104F";
+  }
 }
