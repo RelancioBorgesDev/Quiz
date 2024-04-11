@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={p2.className}>
-        <main className="bg-purple-book max-h-screen h-screen">{children}</main>
+        <main className="bg-purple-book max-h-screen h-screen text-white">{children}</main>
       </body>
     </html>
   );

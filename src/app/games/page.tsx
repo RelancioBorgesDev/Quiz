@@ -1,22 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
 import { CircleHelp } from "lucide-react";
-import { Play } from "next/font/google";
-import Esc from "../components/esc";
-import Link from "next/link";
 
-const play = Play({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-family-play",
-});
+import Esc from "../../components/esc";
+import Link from "next/link";
 
 export default function Games() {
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className={`${play.className} flex flex-col h-screen items-center justify-center relative`}
+      className={`flex flex-col h-screen items-center justify-center relative`}
     >
       <h1 className="text-9xl font-bold drop-shadow-2xl italic absolute top-16 left-4">
         Jogar
