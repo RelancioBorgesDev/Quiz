@@ -1,7 +1,6 @@
 <div align="center" style="margin-bottom: 10px;">
 
-![Project Logo](./public/icon.svg)
-![Project Blog IMage](./public/quiz-banner.jpg)
+![Project Logo](./public/logo.png)
 
 </div>
 
