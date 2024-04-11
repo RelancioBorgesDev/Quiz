@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       backgroundColor: {
         "purple-book": "#35104F",
+        "question-header": "#2E2C2F",
+        "question-content": "#141301",
       },
     },
   },
