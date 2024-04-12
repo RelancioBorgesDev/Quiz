@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "question": "Quem é o autor de \"A Sociedade do Cansaço\"?",
+      "options": [
+        "Michel Foucault",
+        "Byung-Chul Han",
+        "Jean-Paul Sartre",
+        "Friedrich Nietzsche"
+      ],
+      "correctAnswIdx": 1
+    },
+    {
+      "id": "2",
+      "question": "Qual é o tema principal abordado em \"A Sociedade do Cansaço\"?",
+      "options": [
+        "Tecnologia",
+        "Capitalismo",
+        "Desigualdade",
+        "Fadiga e hiperatividade"
+      ],
+      "correctAnswIdx": 3
+    },
+    {
+      "id": "3",
+      "question": "De acordo com Byung-Chul Han, qual é o conceito central que define a sociedade contemporânea?",
+      "options": ["O ócio", "A solidariedade", "O cansaço", "A tradição"],
+      "correctAnswIdx": 2
+    },
+    {
+      "id": "4",
+      "question": "Qual é a crítica principal que o autor faz à cultura contemporânea em \"A Sociedade do Cansaço\"?",
+      "options": [
+        "Excesso de atividade e hiperconectividade",
+        "Falta de inovação tecnológica",
+        "Desigualdade econômica",
+        "Desinteresse pela cultura"
+      ],
+      "correctAnswIdx": 0
+    },
+    {
+      "id": "5",
+      "question": "Segundo Byung-Chul Han, como o excesso de positividade na sociedade contemporânea influencia a experiência do cansaço?",
+      "options": [
+        "Cria uma sensação de exaustão constante",
+        "Estimula a produtividade e a criatividade",
+        "Diminui a importância do trabalho",
+        "Reforça a importância do ócio"
+      ],
+      "correctAnswIdx": 0
+    },
+    {
+      "id": "6",
+      "question": "Qual é a diferença fundamental entre o conceito de disciplina em Foucault e a noção de rendimento em Byung-Chul Han, conforme discutido em \"A Sociedade do Cansaço\"?",
+      "options": [
+        "Foucault valoriza o esforço físico, enquanto Han enfatiza a eficiência mental.",
+        "Foucault defende a autoridade, enquanto Han destaca a autonomia.",
+        "Foucault critica o individualismo, enquanto Han promove o coletivismo.",
+        "Foucault associa o poder à punição, enquanto Han associa o poder ao reconhecimento."
+      ],
+      "correctAnswIdx": 1
+    },
+    {
+      "id": "7",
+      "question": "Qual é a consequência do excesso de positividade na sociedade contemporânea, de acordo com Byung-Chul Han?",
+      "options": [
+        "Aumento da solidariedade",
+        "Redução da ansiedade",
+        "Emergência de uma cultura do descarte",
+        "Fortalecimento dos laços familiares"
+      ],
+      "correctAnswIdx": 2
+    },
+    {
+      "id": "8",
+      "question": "Como Byung-Chul Han descreve a relação entre comunicação digital e solitude em \"A Sociedade do Cansaço\"?",
+      "options": [
+        "A comunicação digital fortalece os laços sociais e reduz a solitude.",
+        "A comunicação digital aumenta a solitude ao criar uma falsa sensação de conexão.",
+        "A comunicação digital é irrelevante para a experiência da solitude.",
+        "A comunicação digital substitui completamente a necessidade de interação social offline."
+      ],
+      "correctAnswIdx": 1
+    },
+    {
+      "id": "9",
+      "question": "Qual é a proposta de Byung-Chul Han para enfrentar os desafios da sociedade do cansaço?",
+      "options": [
+        "Aumentar o ritmo de vida para alcançar uma maior produtividade.",
+        "Promover um retorno às tradições antigas.",
+        "Cultivar o ócio como uma forma de resistência.",
+        "Investir mais em tecnologia para aliviar a carga de trabalho."
+      ],
+      "correctAnswIdx": 2
+    },
+    {
+      "id": "10",
+      "question": "De acordo com Byung-Chul Han, qual é a importância do conceito de negatividade na sociedade contemporânea?",
+      "options": [
+        "É essencial para alimentar a competição.",
+        "Contribui para uma cultura de pessimismo.",
+        "Permite questionar o excesso de positividade e recuperar a capacidade de crítica.",
+        "Deve ser evitado para manter um ambiente de trabalho positivo."
+      ],
+      "correctAnswIdx": 2
+    }
+  ]
+}
