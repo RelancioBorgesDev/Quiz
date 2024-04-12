@@ -15,7 +15,8 @@ const play = Play({
 export default function QuizContainer() {
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [userAnswer, setUserAnswer] = useState<number | null>(null);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [correctAnswersCount, setcorrectAnswersCount] = useState(0);
+  const [allUserAswers, setAllUserAnswers] = useState<number[]>([]);
   const [quizFinished, setQuizFinished] = useState(false);
 
   const totalQuestions = questions.questions.length;
@@ -25,7 +26,7 @@ export default function QuizContainer() {
       if (
         userAnswer === questions.questions[currentQuestionIdx].correctAnswIdx
       ) {
-        setCorrectAnswers(correctAnswers + 1);
+        setcorrectAnswersCount(correctAnswersCount + 1);
       }
 
       if (currentQuestionIdx === totalQuestions - 1) {
@@ -42,11 +43,12 @@ export default function QuizContainer() {
   const handleRestart = () => {
     setCurrentQuestionIdx(0);
     setUserAnswer(null);
-    setCorrectAnswers(0);
+    setcorrectAnswersCount(0);
     setQuizFinished(false);
+    setAllUserAnswers([]);
   };
 
-  const percentageCorrect = (correctAnswers / totalQuestions) * 100;
+  const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
 
   return (
     <main
@@ -59,6 +61,21 @@ export default function QuizContainer() {
             <p className="text-2xl">
               Porcentagem de respostas corretas: {percentageCorrect.toFixed(2)}%
             </p>
+            {allUserAswers.map((answs, index) => (
+              <div key={index}>
+                <p>Question: {questions.questions[index].question}</p>
+                <p>User Answer: {questions.questions[index].options[answs]}</p>
+                <p>
+                  Correct Answ:
+                  {
+                    questions.questions[index].options[
+                      questions.questions[index].correctAnswIdx
+                    ]
+                  }
+                </p>
+              </div>
+            ))}
+
             <div className="flex items-center gap-4">
               <button
                 className="bg-purple-700 p-2 rounded-sm font-bold"
@@ -82,6 +99,7 @@ export default function QuizContainer() {
             <QuestionAndChoices
               question={questions.questions[currentQuestionIdx]}
               setUserAnsw={setUserAnswer}
+              setAllUserAnsws={setAllUserAnswers}
             />
             <footer className="px-8 py-5 flex items-center justify-between">
               <div className="flex items-center gap-4">
