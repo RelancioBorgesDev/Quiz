@@ -5,6 +5,7 @@ import QuestionAndChoices from "./question-and-choices";
 import StatsHeader from "./stats-header";
 import questions from "@/questions.json";
 import Link from "next/link";
+import Feedback from "@/components/feedback";
 
 const play = Play({
   weight: ["400"],
@@ -48,7 +49,7 @@ export default function QuizContainer() {
     setAllUserAnswers([]);
   };
 
-  const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
+  const percentageCorrect = ((correctAnswersCount+1 )/ totalQuestions) * 100;
 
   return (
     <main
@@ -56,39 +57,45 @@ export default function QuizContainer() {
     >
       <div className="w-[1050px] bg-question-content rounded-t-lg rounded-b-lg">
         {quizFinished ? (
-          <div className="px-4 py-8 flex flex-col items-center justify-center gap-4">
-            <h2 className="text-7xl font-bold">Quiz Finalizado!</h2>
-            <p className="text-2xl">
-              Porcentagem de respostas corretas: {percentageCorrect.toFixed(2)}%
-            </p>
-            {allUserAswers.map((answs, index) => (
-              <div key={index}>
-                <p>Question: {questions.questions[index].question}</p>
-                <p>User Answer: {questions.questions[index].options[answs]}</p>
-                <p>
-                  Correct Answ:
-                  {
-                    questions.questions[index].options[
-                      questions.questions[index].correctAnswIdx
-                    ]
-                  }
-                </p>
-              </div>
-            ))}
-
-            <div className="flex items-center gap-4">
+          <div className=" flex flex-col gap-4  ">
+            <header className="pb-4 bg-question-header px-4 py-8 rounded-t-lg">
+              <h2 className="text-5xl font-bold">Quiz Finalizado!</h2>
+              <p className="text-2xl">
+                Resultado Final: {correctAnswersCount+1}/{totalQuestions} -{" "}
+                {percentageCorrect.toFixed(2)}%
+              </p>
+            </header>
+            <div className="max-h-[400px] overflow-y-auto px-8 flex flex-col gap-4">
+              {allUserAswers.map((answs, index) => {
+                const question = questions.questions[index];
+                if (question) {
+                  return (
+                    <Feedback
+                      key={index}
+                      problemQuestion={question.question}
+                      userAsw={question.options[answs]}
+                      correctAnsw={question.options[question.correctAnswIdx]}
+                      questionIndex={index}
+                    />
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </div>
+            <footer className="flex items-center rounded-b-lg gap-4 pt-4 px-4 py-8">
               <button
-                className="bg-purple-700 p-2 rounded-sm font-bold"
+                className="bg-purple-700 p-2 rounded-sm font-bold hover:brightness-90"
                 onClick={handleRestart}
               >
                 Refazer o quiz
               </button>
               <Link href={"/"}>
-                <button className="bg-gray-400 p-2 rounded-sm font-bold">
-                  Voltar para o inicio
+                <button className="bg-gray-400 p-2 rounded-sm font-bold hover:brightness-90">
+                  Voltar para o início
                 </button>
               </Link>
-            </div>
+            </footer>
           </div>
         ) : (
           <div>
@@ -123,14 +130,14 @@ export default function QuizContainer() {
                 </button>
                 {currentQuestionIdx === totalQuestions - 1 ? (
                   <button
-                    className="bg-purple-700 p-2 rounded-sm font-bold"
+                    className="bg-purple-700 p-2 rounded-sm font-bold hover:brightness-105"
                     onClick={handleContinue}
                   >
                     Finalizar
                   </button>
                 ) : (
                   <button
-                    className="bg-purple-700 p-2 rounded-sm font-bold"
+                    className="bg-purple-700 p-2 rounded-sm font-bold hover:brightness-105"
                     onClick={handleContinue}
                   >
                     Continuar
