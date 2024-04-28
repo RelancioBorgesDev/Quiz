@@ -15,9 +15,6 @@ export default function StatsHeader({
       <h2 className="text-4xl">
         Questão {`${currentQuestion}/${totalQuestions}`}
       </h2>
-      <span>
-        <QrCodeModal />
-      </span>
     </header>
   );
 }

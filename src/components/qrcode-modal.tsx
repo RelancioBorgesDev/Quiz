@@ -22,7 +22,6 @@ export default function QrCodeModal() {
         <AlertDialogCancel className="absolute top-2 right-2">
           <X />
         </AlertDialogCancel>
-        {/* <Image src={} alt="QrCode Image" /> */}
         <QrCode size={94} />
       </AlertDialogContent>
     </AlertDialog>
