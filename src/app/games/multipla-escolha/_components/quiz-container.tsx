@@ -27,8 +27,6 @@ export default function QuizContainer() {
       const correctAnsw =
         questions.questions[currentQuestionIdx].correctAnswIdx;
       if (userAnswer === correctAnsw) {
-        console.log("Resposta do usuario: " + userAnswer);
-        console.log("Resposta correta: " + correctAnsw);
         setcorrectAnswersCount(correctAnswersCount + 1);
       }
 
@@ -52,7 +50,7 @@ export default function QuizContainer() {
   };
 
   const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
-  console.log(correctAnswersCount);
+
   return (
     <main
       className={`${play.className} h-screen flex items-center justify-center `}
