@@ -24,9 +24,11 @@ export default function QuizContainer() {
 
   const handleContinue = () => {
     if (userAnswer !== null) {
-      if (
-        userAnswer === questions.questions[currentQuestionIdx].correctAnswIdx
-      ) {
+      const correctAnsw =
+        questions.questions[currentQuestionIdx].correctAnswIdx;
+      if (userAnswer === correctAnsw) {
+        console.log("Resposta do usuario: " + userAnswer);
+        console.log("Resposta correta: " + correctAnsw);
         setcorrectAnswersCount(correctAnswersCount + 1);
       }
 
@@ -49,8 +51,8 @@ export default function QuizContainer() {
     setAllUserAnswers([]);
   };
 
-  const percentageCorrect = ((correctAnswersCount+1 )/ totalQuestions) * 100;
-
+  const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
+  console.log(correctAnswersCount);
   return (
     <main
       className={`${play.className} h-screen flex items-center justify-center `}
@@ -61,19 +63,19 @@ export default function QuizContainer() {
             <header className="pb-4 bg-question-header px-4 py-8 rounded-t-lg">
               <h2 className="text-5xl font-bold">Quiz Finalizado!</h2>
               <p className="text-2xl">
-                Resultado Final: {correctAnswersCount+1}/{totalQuestions} -{" "}
+                Resultado Final: {correctAnswersCount}/{totalQuestions} -{" "}
                 {percentageCorrect.toFixed(2)}%
               </p>
             </header>
             <div className="max-h-[400px] overflow-y-auto px-8 flex flex-col gap-4">
-              {allUserAswers.map((answs, index) => {
+              {allUserAswers.map((userAnswerIndex, index) => {
                 const question = questions.questions[index];
                 if (question) {
                   return (
                     <Feedback
                       key={index}
                       problemQuestion={question.question}
-                      userAsw={question.options[answs]}
+                      userAsw={question.options[userAnswerIndex]}
                       correctAnsw={question.options[question.correctAnswIdx]}
                       questionIndex={index}
                     />
