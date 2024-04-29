@@ -32,6 +32,9 @@ export default function Feedback({
           </span>{" "}
         </AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4 py-4 px-4 text-lg">
+          <span className="text-white font-bold">
+           {problemQuestion}
+          </span>
           <span className={`${isCorrect ? "text-green-500" : "text-red-500"}`}>
             <span className="text-white font-bold">Sua resposta:</span>{" "}
             {userAsw}
