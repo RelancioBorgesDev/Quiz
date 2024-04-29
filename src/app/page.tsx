@@ -1,6 +1,14 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { X } from "lucide-react";
+import Opcoes from "./_opcoes/page";
 
 export default function Home() {
   return (
@@ -137,9 +145,17 @@ export default function Home() {
         </motion.span>
 
         <motion.span whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}>
-          <Link href={""} className="text-2xl">
-            Opções
-          </Link>
+          <AlertDialog>
+            <AlertDialogTrigger>
+              <div className="text-2xl">Opções</div>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="flex items-center justify-center">
+              <AlertDialogCancel className="absolute top-2 right-2">
+                <X />
+              </AlertDialogCancel>
+              <Opcoes />
+            </AlertDialogContent>
+          </AlertDialog>
         </motion.span>
       </motion.ul>
     </main>

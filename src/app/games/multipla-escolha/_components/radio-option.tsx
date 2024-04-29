@@ -1,4 +1,5 @@
 import React from "react";
+import { useOpcoes } from "@/contexts/OpcoesContext";
 
 interface RadioOptionProps {
   id: string;
@@ -16,7 +17,7 @@ export default function RadioOption({
   const handleChange = () => {
     onChange();
   };
-
+  const { tamanhoFonte } = useOpcoes();
   return (
     <label
       className={`flex gap-4 border-2 px-4 py-8 rounded-md cursor-pointer ${
@@ -30,7 +31,7 @@ export default function RadioOption({
         checked={checked}
         onChange={handleChange}
       />
-      <div className="flex-grow">{question}</div>
+      <div style={{ fontSize: `${tamanhoFonte}px` }}>{question}</div>
     </label>
   );
 }
