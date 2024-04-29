@@ -26,6 +26,8 @@ export default function QuizContainer() {
     if (userAnswer !== null) {
       const correctAnsw =
         questions.questions[currentQuestionIdx].correctAnswIdx;
+
+      setAllUserAnswers((prevAnswers) => [...prevAnswers, userAnswer]);
       if (userAnswer === correctAnsw) {
         setcorrectAnswersCount(correctAnswersCount + 1);
       }
@@ -48,7 +50,6 @@ export default function QuizContainer() {
     setQuizFinished(false);
     setAllUserAnswers([]);
   };
-
   const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
 
   return (
@@ -78,8 +79,6 @@ export default function QuizContainer() {
                       questionIndex={index}
                     />
                   );
-                } else {
-                  return null;
                 }
               })}
             </div>
@@ -91,7 +90,10 @@ export default function QuizContainer() {
                 Refazer o quiz
               </button>
               <Link href={"/"}>
-                <button className="bg-gray-400 p-2 rounded-sm font-bold hover:brightness-90">
+                <button
+                  className="bg-gray-400 p-2 rounded-sm font-bold hover:brightness-90"
+                  onClick={handleRestart}
+                >
                   Voltar para o início
                 </button>
               </Link>
@@ -106,7 +108,6 @@ export default function QuizContainer() {
             <QuestionAndChoices
               question={questions.questions[currentQuestionIdx]}
               setUserAnsw={setUserAnswer}
-              setAllUserAnsws={setAllUserAnswers}
             />
             <footer className="px-8 py-5 flex items-center justify-between">
               <div className="flex items-center gap-4">

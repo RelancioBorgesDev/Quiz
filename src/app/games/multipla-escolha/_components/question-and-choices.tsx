@@ -6,20 +6,17 @@ import { useOpcoes } from "@/contexts/OpcoesContext";
 interface QuestionAndChoicesProps {
   question: Question;
   setUserAnsw: Dispatch<SetStateAction<number | null>>;
-  setAllUserAnsws: Dispatch<SetStateAction<number[]>>;
 }
 
 export default function QuestionAndChoices({
   question,
   setUserAnsw,
-  setAllUserAnsws,
 }: QuestionAndChoicesProps) {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
   const handleOptionChange = (optionIndex: number) => {
     setSelectedOption(optionIndex);
     setUserAnsw(optionIndex);
-    setAllUserAnsws((prevUserAnswers) => [...prevUserAnswers, optionIndex]);
   };
 
   useEffect(() => {

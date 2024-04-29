@@ -25,7 +25,7 @@ export default function Feedback({
       <AccordionItem value="item-1">
         <AccordionTrigger className="text-xl truncate">
           <span className={`${isCorrect ? "text-green-500" : "text-red-500"}`}>
-            Questão {questionIndex + 1}){" "}
+            Questão {questionIndex + 1})
             {problemQuestion.length > 30
               ? `${problemQuestion.slice(0, 60)}...`
               : problemQuestion}
