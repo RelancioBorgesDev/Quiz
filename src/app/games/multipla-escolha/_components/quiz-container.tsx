@@ -82,7 +82,7 @@ export default function QuizContainer() {
     setAllUserAnswers([]);
   };
   const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
-  console.log(correctAnswersCount);
+
   return (
     <main
       className={`${play.className} h-screen flex items-center justify-center `}
