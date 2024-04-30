@@ -16,8 +16,8 @@ const play = Play({
 export default function QuizContainer() {
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [userAnswer, setUserAnswer] = useState<number | null>(null);
-  const [correctAnswersCount, setcorrectAnswersCount] = useState(0);
-  const [allUserAswers, setAllUserAnswers] = useState<number[]>([]);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [allUserAnswers, setAllUserAnswers] = useState<number[]>([]);
   const [quizFinished, setQuizFinished] = useState(false);
 
   const totalQuestions = questions.questions.length;
@@ -27,9 +27,23 @@ export default function QuizContainer() {
       const correctAnsw =
         questions.questions[currentQuestionIdx].correctAnswIdx;
 
-      setAllUserAnswers((prevAnswers) => [...prevAnswers, userAnswer]);
-      if (userAnswer === correctAnsw) {
-        setcorrectAnswersCount(correctAnswersCount + 1);
+      const previousAnswerCorrect =
+        allUserAnswers[currentQuestionIdx] === correctAnsw;
+
+      
+      setAllUserAnswers((prevAnswers) => {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[currentQuestionIdx] = userAnswer;
+        return updatedAnswers;
+      });
+
+      
+      if (userAnswer === correctAnsw && !previousAnswerCorrect) {
+        
+        setCorrectAnswersCount(correctAnswersCount + 1);
+      } else if (userAnswer !== correctAnsw && previousAnswerCorrect) {
+     
+        setCorrectAnswersCount(correctAnswersCount - 1);
       }
 
       if (currentQuestionIdx === totalQuestions - 1) {
@@ -43,15 +57,32 @@ export default function QuizContainer() {
     }
   };
 
+  const handleBack = () => {
+    if (currentQuestionIdx > 0) {
+      setCurrentQuestionIdx(currentQuestionIdx - 1);
+
+      const prevQuestionIndex = currentQuestionIdx - 1;
+
+      if (userAnswer !== null) {
+        setAllUserAnswers((prevAnswers) => {
+          const updatedAnswers = [...prevAnswers];
+          updatedAnswers[prevQuestionIndex] = userAnswer;
+          return updatedAnswers;
+        });
+      }
+
+      setUserAnswer(allUserAnswers[prevQuestionIndex]);
+    }
+  };
   const handleRestart = () => {
     setCurrentQuestionIdx(0);
     setUserAnswer(null);
-    setcorrectAnswersCount(0);
+    setCorrectAnswersCount(0);
     setQuizFinished(false);
     setAllUserAnswers([]);
   };
   const percentageCorrect = (correctAnswersCount / totalQuestions) * 100;
-
+  console.log(correctAnswersCount);
   return (
     <main
       className={`${play.className} h-screen flex items-center justify-center `}
@@ -67,7 +98,7 @@ export default function QuizContainer() {
               </p>
             </header>
             <div className="max-h-[400px] overflow-y-auto px-8 flex flex-col gap-4">
-              {allUserAswers.map((userAnswerIndex, index) => {
+              {allUserAnswers.map((userAnswerIndex, index) => {
                 const question = questions.questions[index];
                 if (question) {
                   return (
@@ -114,7 +145,7 @@ export default function QuizContainer() {
                 <span>{currentQuestionIdx + 1}</span>
                 <span>
                   <progress
-                    className="h-4 w-full max-w-md border-0"
+                    className="h-4 w-full max-w-md bg-gray-200 rounded-full overflow-hidden"
                     value={currentQuestionIdx + 1}
                     max={totalQuestions}
                   />
@@ -124,7 +155,7 @@ export default function QuizContainer() {
               <div className="flex items-center gap-6">
                 <button
                   className="bg-gray-400 p-2 rounded-sm font-bold"
-                  onClick={() => setCurrentQuestionIdx(currentQuestionIdx - 1)}
+                  onClick={handleBack}
                   disabled={currentQuestionIdx === 0}
                 >
                   Voltar

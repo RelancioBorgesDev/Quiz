@@ -25,7 +25,7 @@ export default function QuestionAndChoices({
   const { tamanhoFonte } = useOpcoes();
 
   return (
-    <main className="py-6 px-4 flex flex-col gap-8 overflow-scroll">
+    <main className="py-6 px-4 flex flex-col gap-8 overflow-y-auto">
       <section>
         <p style={{ fontSize: `${tamanhoFonte}px` }}>{question.question}</p>
       </section>
